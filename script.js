@@ -20,6 +20,7 @@ async function main() {
     inputs = await loadInput();
     await connectNetwork();
 
+    // Display nodes on html page
     for(let i = 0; i < network.length; i++) {
         $(document).ready(function() {
             $('#annContainer').append(
@@ -42,6 +43,7 @@ async function main() {
     }
 }
 
+// Loads the network structure from the txt file
 function loadNetworkStructure() {
     return new Promise((resolve, reject) => {
         res = [];
@@ -61,6 +63,7 @@ function loadNetworkStructure() {
     }) 
 }
 
+// Creates the network list from the network structure
 function loadNetwork() {
     return new Promise((resolve, reject) => {
         res = [];
@@ -79,6 +82,7 @@ function loadNetwork() {
     });
 }
 
+// Loads the inputs into the network from the txt file
 function loadInput() {
     return new Promise((resolve, reject) => {
         res = [];
@@ -97,6 +101,7 @@ function loadInput() {
     });
 }
 
+// Connects the network together and determines the collector values
 function connectNetwork() {
     return new Promise((resolve, reject) => { 
         for(let i = 0; i < inputs.length; i++) {
