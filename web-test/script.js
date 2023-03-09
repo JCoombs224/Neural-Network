@@ -14,15 +14,35 @@ network = [];
 inputs = [];
 
 async function main() {
-    netNodeStruct = await load();
+    // Load in data from text files
+    netNodeStruct = await loadNetworkStructure();
     network = await loadNetwork();
     inputs = await loadInput();
     await connectNetwork();
 
-    
+    for(let i = 0; i < network.length; i++) {
+        $(document).ready(function() {
+            $('#annContainer').append(
+                $('<div>').prop({
+                    id: 'x'+i,
+                    className: 'x-axis'
+                })
+            );
+        });
+        for (let n of network[i]) {
+            $(document).ready(function() {
+                $('#x'+i).append(
+                    $('<div>').prop({
+                        className: 'node',
+                        innerHTML: n.collector
+                    })
+                );
+            });
+        }
+    }
 }
 
-function load() {
+function loadNetworkStructure() {
     return new Promise((resolve, reject) => {
         res = [];
         networkFr = new XMLHttpRequest();
