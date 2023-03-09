@@ -6,10 +6,6 @@
     transform: translateY(-50%);
 }
 
-.layer1::after {
-    content: 'hi'
-}
-
 .x-axis {
     margin-right: 10vw;
     width: 1cm;
